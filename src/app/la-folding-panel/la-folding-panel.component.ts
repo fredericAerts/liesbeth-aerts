@@ -20,11 +20,11 @@ export class LaFoldingPanelComponent implements OnChanges {
   }
 
   loadComponent(component) {
-    let componentFactory = this._componentFactoryResolver.resolveComponentFactory(component);
+    const componentFactory = this._componentFactoryResolver.resolveComponentFactory(component);
 
-    let viewContainerRef = this.contentHost.viewContainerRef;
+    const viewContainerRef = this.contentHost.viewContainerRef;
     viewContainerRef.clear();
 
-    let componentRef = viewContainerRef.createComponent(componentFactory);
+    const componentRef = viewContainerRef.createComponent(componentFactory);
   }
 }

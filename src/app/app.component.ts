@@ -10,11 +10,11 @@ import { LaGalleryService } from './la-gallery/la-gallery.service';
 })
 export class AppComponent {
   items: LaGalleryItem[] = this._galleryService.items;
-  component: any;
+  activeComponent: any;
 
   constructor(private _galleryService: LaGalleryService) {}
 
   selectItem(component) {
-    this.component = component;
+    this.activeComponent = component;
   }
 }
