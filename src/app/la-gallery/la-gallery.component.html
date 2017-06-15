@@ -1,0 +1,8 @@
+<ul class="la-gallery">
+  <li class="la-gallery__item" *ngFor="let item of items;" href="item.routeLink" [class.dark-text]="item.lightTheme" (click)="selectItem(item);">
+    <h2 class="la-gallery__item__title">{{ item.title }}</h2>
+    <p class="la-gallery__item__intro">{{ item.intro }}</p>
+    <b class="la-gallery__item__cta">{{ item.cta }}</b>
+  </li>
+</ul>
+
