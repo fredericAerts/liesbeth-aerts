@@ -1,6 +1,6 @@
-<la-gallery (onSelect)="selectItem($event)" [items]="items"></la-gallery>
+<la-gallery [items]="items" (onSelect)="selectItem($event)" [class.fold-is-open]="foldIsOpen" (click)="onGalleryClick($event)"></la-gallery>
 
-<la-folding-panel [component]="activeComponent"></la-folding-panel>
+<la-folding-panel [component]="activeComponent" (onToggle)="onFoldToggle($event);" [class.is-open]="foldIsOpen"></la-folding-panel>
 <!-- <h1 i18n="Intro|Testing translation">
   Hello World
 </h1> -->

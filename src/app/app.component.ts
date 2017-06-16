@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
+import { Component, Inject, ViewChild } from '@angular/core';
 
+import { LaFoldingPanelComponent } from './la-folding-panel/la-folding-panel.component';
 import { LaGalleryItem } from './la-gallery/la-gallery-item';
 import { LaGalleryService } from './la-gallery/la-gallery.service';
 
@@ -11,10 +13,32 @@ import { LaGalleryService } from './la-gallery/la-gallery.service';
 export class AppComponent {
   items: LaGalleryItem[] = this._galleryService.items;
   activeComponent: any;
+  foldIsOpen: boolean = false;
+  document: HTMLDocument;
+  @ViewChild(LaFoldingPanelComponent) private _foldingPanelComponent : LaFoldingPanelComponent;
 
-  constructor(private _galleryService: LaGalleryService) {}
+  constructor(private _galleryService: LaGalleryService, @Inject(DOCUMENT) document: HTMLDocument) {
+    this.document = document;
+  }
 
   selectItem(component) {
     this.activeComponent = component;
+  }
+
+  onFoldToggle(isOpen) {
+    this.foldIsOpen = isOpen;
+
+    if (isOpen) {
+      this.document.body.style.overflow = 'hidden';
+    } else {
+      setTimeout(() => this.document.body.style.overflow = 'visible', 900);
+      this.activeComponent = null;
+    }
+  }
+
+  onGalleryClick(event) {
+    if (this.foldIsOpen && event.target.classList.contains('la-gallery')) {
+      this._foldingPanelComponent.closeFold();
+    }
   }
 }

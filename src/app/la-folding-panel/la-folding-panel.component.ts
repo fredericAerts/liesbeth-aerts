@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, Input, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter, ViewChild, ComponentFactoryResolver, ComponentRef } from '@angular/core';
 
 import { LaFoldingPanelHostDirective } from './la-folding-panel-host.directive';
 
@@ -9,22 +9,34 @@ import { LaFoldingPanelHostDirective } from './la-folding-panel-host.directive';
 })
 export class LaFoldingPanelComponent implements OnChanges {
   @Input() component;
+  @Output() onToggle = new EventEmitter<boolean>();
   @ViewChild(LaFoldingPanelHostDirective) contentHost: LaFoldingPanelHostDirective;
+  componentRef: ComponentRef<Component>;
 
   constructor(private _componentFactoryResolver: ComponentFactoryResolver) { }
 
+  // Fold is triggered when new Input component is set
   ngOnChanges(changes: SimpleChanges) {
     if (this.component) {
-      this.loadComponent(this.component);
+      this.openFold(this.component);
     }
   }
 
-  loadComponent(component) {
+  openFold(component) {
     const componentFactory = this._componentFactoryResolver.resolveComponentFactory(component);
 
     const viewContainerRef = this.contentHost.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent(componentFactory);
+    this.componentRef = viewContainerRef.createComponent(componentFactory);
+
+    setTimeout(() => this.componentRef.location.nativeElement.classList.add('is-open'), 10);
+
+    this.onToggle.emit(true);
+  }
+
+  closeFold() {
+    this.componentRef.location.nativeElement.classList.remove('is-open');
+    this.onToggle.emit(false);
   }
 }

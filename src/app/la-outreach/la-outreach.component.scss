@@ -1,0 +1,53 @@
+:host > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+:host h2 {
+  font-size: 2.4rem;
+  transition: transform 0.2s 0.2s, opacity 0.2s 0.2s;
+}
+:host p, :host em {
+  line-height: 1.6;
+}
+:host em {
+  display: inline-block;
+  margin: 1em 0;
+  font-family: "Vollkorn", serif;
+  font-size: 1.8rem;
+  color: #7a78ae;
+  transition: transform 0.2s 0.1s, opacity 0.2s 0.1s;
+}
+:host p {
+  margin-bottom: 1em;
+  font-size: 1.4rem;
+  transition: transform 0.2s 0s, opacity 0.2s 0s;
+}
+:host.is-open > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+:host.is-open h2 {
+  transition: transform 0.2s 0.5s, opacity 0.2s 0.5s;
+}
+:host.is-open em {
+  transition: transform 0.2s 0.6s, opacity 0.2s 0.6s;
+}
+:host.is-open p {
+  transition: transform 0.2s 0.7s, opacity 0.2s 0.7s;
+}
+@media only screen and (min-width: 600px) {
+  :host h2 {
+    font-size: 3.2rem;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  :host > * {
+    transform: translateY(40px);
+  }
+  :host em {
+    font-size: 2.2rem;
+  }
+  :host p {
+    font-size: 1.6rem;
+  }
+}

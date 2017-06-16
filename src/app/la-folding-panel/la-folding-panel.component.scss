@@ -1,8 +1,5 @@
-/* --------------------------------
-
-folding panel
-
--------------------------------- */
+/*  HOST
+    =================================================================================================== */
 :host {
   position: fixed;
   z-index: 1;
@@ -13,47 +10,115 @@ folding panel
   visibility: hidden;
   overflow: hidden;
   transition: visibility 0s 0.9s;
+
+  @media only screen and (min-width: 600px) {
+    width: 600px;
+  }
+
+  @media only screen and (min-width: 1100px) {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+
+    width: 800px;
+  }
+
+  &.is-open {
+    visibility: visible;
+    transition: visibility 0s 0s;
+  }
 }
-:host .fold-left,
-:host .fold-right {
-  /* the :after elements of .fold-left and .fold-right are the 2 fold sides */
+
+/*  LEFT AND RIGHT WINGS
+    =================================================================================================== */
+.la-folding-panel__left,
+.la-folding-panel__right {
+  /* the :after elements of .la-folding-panel__left and .la-folding-panel__right are the 2 fold sides */
   width: 100%;
   height: 100vh;
   overflow: hidden;
   position: relative;
   /* enable a 3D-space for children elements */
   perspective: 2000px;
+
+  @media only screen and (min-width: 1100px) {
+    width: 50%;
+    float: left;
+    height: 100%;
+  }
+
+  &:after {
+    /* 2 fold sides */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* Force Hardware Acceleration */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    transition: transform 0.5s 0.4s, background-color 0.5s 0.4s;
+  }
+
+  :host.is-open & {
+
+    &:after {
+      transform: translateX(0);
+      transition: transform 0.5s 0s, background-color 0.5s 0s;
+    }
+  }
 }
-:host .fold-left::after,
-:host .fold-right::after {
-  /* 2 fold sides */
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  /* Force Hardware Acceleration */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  transition: transform 0.5s 0.4s, background-color 0.5s 0.4s;
-}
-:host .fold-right {
+
+.la-folding-panel__right {
   perspective-origin: 0% 50%;
+
+  @media only screen and (min-width: 1100px) {
+    perspective-origin: 0% 50%;
+  }
+
+  &:after {
+    transform-origin: right center;
+    transform: translateX(-100%) rotateY(-90deg);
+    background-color: #c0c3c3;
+
+    @media only screen and (min-width: 1100px) {
+      transform-origin: right center;
+      transform: translateX(-100%) rotateY(-90deg);
+    }
+  }
+
+  :host.is-open & {
+
+    &:after {
+      background-color: #f9fafa;
+    }
+  }
 }
-:host .fold-right::after {
-  transform-origin: right center;
-  transform: translateX(-100%) rotateY(-90deg);
-  background-color: #c0c3c3;
-}
-:host .fold-left {
+
+.la-folding-panel__left {
   /* on mobile only the right fold side is visible */
   display: none;
+
+  @media only screen and (min-width: 1100px) {
+    display: block;
+    /* change perspective-origin so that the 2 fold sides have the same vanishing point */
+    perspective-origin: 100% 50%;
+  }
+
+  &:after {
+    background-color: #f9fafa;
+
+    @media only screen and (min-width: 1100px) {
+      transform-origin: left center;
+      transform: translateX(100%) rotateY(90deg);
+    }
+  }
 }
-:host .fold-left::after {
-  background-color: #f9fafa;
-}
-:host .cd-close {
+
+/*  CLOSE BUTTON
+    =================================================================================================== */
+.la-folding-panel__close {
   /* 'X' close icon */
   position: absolute;
   z-index: 1;
@@ -68,146 +133,56 @@ folding panel
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.2s 0s;
-}
-:host .cd-close::after, :host .cd-close::before {
-  /* lines of 'X' icon */
-  content: '';
-  position: absolute;
-  height: 3px;
-  width: 32px;
-  left: 50%;
-  top: 50%;
-  background-color: #544173;
-  backface-visibility: hidden;
-  transition: opacity 0.2s;
-}
-:host .cd-close::after {
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-}
-:host .cd-close::before {
-  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
-}
-:host.is-open {
-  visibility: visible;
-  transition: visibility 0s 0s;
-}
-:host.is-open .fold-right::after,
-:host.is-open .fold-left::after {
-  transform: translateX(0);
-  transition: transform 0.5s 0s, background-color 0.5s 0s;
-}
-:host.is-open .fold-right::after {
-  background-color: #f9fafa;
-}
-:host.is-open .cd-close {
-  opacity: 1;
-  transition: opacity 0.2s 0.5s;
-}
-@media only screen and (min-width: 600px) {
-  :host {
-    width: 600px;
+
+  :host.is-open & {
+    opacity: 1;
+    transition: opacity 0.2s 0.5s;
   }
-}
-@media only screen and (min-width: 1100px) {
-  :host {
+
+  &:before,
+  &:after {
+    /* lines of 'X' icon */
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 32px;
     left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    width: 800px;
+    top: 50%;
+    background-color: #544173;
+    backface-visibility: hidden;
+    transition: opacity 0.2s;
   }
-  :host .fold-left,
-  :host .fold-right {
-    width: 50%;
-    float: left;
-    height: 100%;
+
+  &:before {
+    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
   }
-  :host .fold-right {
-    /* change perspective-origin so that the 2 fold sides have the same vanishing point */
-    perspective-origin: 0% 50%;
-  }
-  :host .fold-right::after {
-    transform-origin: right center;
-    transform: translateX(-100%) rotateY(-90deg);
-  }
-  :host .fold-left {
-    display: block;
-    /* change perspective-origin so that the 2 fold sides have the same vanishing point */
-    perspective-origin: 100% 50%;
-  }
-  :host .fold-left::after {
-    transform-origin: left center;
-    transform: translateX(100%) rotateY(90deg);
+
+  &:after {
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
 }
 
-.cd-fold-content {
+/*  CONTENT
+    =================================================================================================== */
+.la-folding-panel__content {
   position: absolute;
   top: 0;
   left: 0;
+
   height: 100%;
   width: 100%;
   padding: 4em 2em;
+
   visibility: hidden;
   transition: visibility 0s 0.4s;
-}
-.cd-fold-content > * {
-  opacity: 0;
-  transform: translateY(20px);
-}
-.cd-fold-content h2 {
-  font-size: 2.4rem;
-  transition: transform 0.2s 0.2s, opacity 0.2s 0.2s;
-}
-.cd-fold-content p, .cd-fold-content em {
-  line-height: 1.6;
-}
-.cd-fold-content em {
-  display: inline-block;
-  margin: 1em 0;
-  font-family: "Vollkorn", serif;
-  font-size: 1.8rem;
-  color: #7a78ae;
-  transition: transform 0.2s 0.1s, opacity 0.2s 0.1s;
-}
-.cd-fold-content p {
-  margin-bottom: 1em;
-  font-size: 1.4rem;
-  transition: transform 0.2s 0s, opacity 0.2s 0s;
-}
-.is-open .cd-fold-content {
-  overflow-y: auto;
-  visibility: visible;
-  transition: visibility 0s 0.5s;
-}
-.is-open .cd-fold-content > * {
-  opacity: 1;
-  transform: translateY(0);
-}
-.is-open .cd-fold-content h2 {
-  transition: transform 0.2s 0.5s, opacity 0.2s 0.5s;
-}
-.is-open .cd-fold-content em {
-  transition: transform 0.2s 0.6s, opacity 0.2s 0.6s;
-}
-.is-open .cd-fold-content p {
-  transition: transform 0.2s 0.7s, opacity 0.2s 0.7s;
-}
-@media only screen and (min-width: 600px) {
-  .cd-fold-content h2 {
-    font-size: 3.2rem;
-  }
-}
-@media only screen and (min-width: 1100px) {
-  .cd-fold-content {
+
+  @media only screen and (min-width: 1100px) {
     padding: 4em;
   }
-  .cd-fold-content > * {
-    transform: translateY(40px);
-  }
-  .cd-fold-content em {
-    font-size: 2.2rem;
-  }
-  .cd-fold-content p {
-    font-size: 1.6rem;
+
+  :host.is-open & {
+    overflow-y: auto;
+    visibility: visible;
+    transition: visibility 0s 0.5s;
   }
 }
