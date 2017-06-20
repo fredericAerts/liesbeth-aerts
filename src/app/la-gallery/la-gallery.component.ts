@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ElementRef } from '@angular/core';
 
 import { LaGalleryItem } from './la-gallery-item';
 
@@ -11,7 +11,7 @@ export class LaGalleryComponent {
   @Input() items: LaGalleryItem[];
   @Output() onSelect = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(public elementRef: ElementRef) { }
 
   selectItem(item) {
     this.onSelect.emit(item.component);

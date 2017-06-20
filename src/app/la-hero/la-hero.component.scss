@@ -1,0 +1,48 @@
+:host {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 634px; // TODO : set by js
+
+  text-align: center;
+}
+
+.hero__avatar {
+  max-width: 250px;
+  margin-bottom: 40px;
+}
+
+.hero__title {
+  max-width: 90%;
+  margin-bottom: 20px;
+
+  font-size: 30px;
+
+  @media only screen and (min-width: 1100px) {
+    font-size: 40px;
+  }
+}
+
+.hero__intro {
+  max-width: 80%;
+  line-height: 1.2em;
+
+  @media only screen and (min-width: 1100px) {
+    max-width: 60%;
+  }
+}
+
+.hero__nav-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 50px;
+
+  cursor: pointer;
+}

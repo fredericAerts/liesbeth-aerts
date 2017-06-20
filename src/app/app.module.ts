@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+import { WindowRef } from './browser/window-ref.service';
 import { AppComponent } from './app.component';
 import { LaGalleryComponent } from './la-gallery/la-gallery.component';
 import { LaFoldingPanelComponent } from './la-folding-panel/la-folding-panel.component';
@@ -11,6 +12,7 @@ import { LaOutreachComponent } from './la-outreach/la-outreach.component';
 import { LaWritingEditingComponent } from './la-writing-editing/la-writing-editing.component';
 import { LaResearchComponent } from './la-research/la-research.component';
 import { LaGalleryService } from './la-gallery/la-gallery.service';
+import { LaHeroComponent } from './la-hero/la-hero.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { LaGalleryService } from './la-gallery/la-gallery.service';
     LaOutreachComponent,
     LaWritingEditingComponent,
     LaResearchComponent,
+    LaHeroComponent,
   ],
   entryComponents: [
     LaAdvocacyComponent,
@@ -34,6 +37,7 @@ import { LaGalleryService } from './la-gallery/la-gallery.service';
     HttpModule,
   ],
   providers: [
+    WindowRef,
     LaGalleryService
   ],
   bootstrap: [ AppComponent ]

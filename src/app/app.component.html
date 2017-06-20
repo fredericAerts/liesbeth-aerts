@@ -1,4 +1,6 @@
-<la-gallery [items]="items" (onSelect)="selectItem($event)" [class.fold-is-open]="foldIsOpen" (click)="onGalleryClick($event)"></la-gallery>
+<la-hero (onNavigate)="scrollToGallery()" [style.height.px]="window.innerHeight"></la-hero>
+
+<la-gallery [items]="items" (onSelect)="selectItem($event)" [class.fold-is-open]="foldIsOpen" (click)="onGalleryClick($event)" [style.height]="window.innerWidth >= 1100 ? window.innerHeight + 'px' : 'auto'"></la-gallery>
 
 <la-folding-panel [component]="activeComponent" (onToggle)="onFoldToggle($event);" [class.is-open]="foldIsOpen"></la-folding-panel>
 <!-- <h1 i18n="Intro|Testing translation">

@@ -131,8 +131,10 @@
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
+
   opacity: 0;
   transition: opacity 0.2s 0s;
+  cursor: pointer;
 
   :host.is-open & {
     opacity: 1;

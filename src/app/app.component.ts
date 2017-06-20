@@ -1,6 +1,8 @@
 import { DOCUMENT } from '@angular/platform-browser';
 import { Component, Inject, ViewChild } from '@angular/core';
 
+import { WindowRef } from './browser/window-ref.service';
+import { LaGalleryComponent } from './la-gallery/la-gallery.component';
 import { LaFoldingPanelComponent } from './la-folding-panel/la-folding-panel.component';
 import { LaGalleryItem } from './la-gallery/la-gallery-item';
 import { LaGalleryService } from './la-gallery/la-gallery.service';
@@ -11,13 +13,18 @@ import { LaGalleryService } from './la-gallery/la-gallery.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  window: Window;
+  document: HTMLDocument;
   items: LaGalleryItem[] = this._galleryService.items;
   activeComponent: any;
   foldIsOpen: boolean = false;
-  document: HTMLDocument;
+  @ViewChild(LaGalleryComponent) private _galleryComponent : LaGalleryComponent;
   @ViewChild(LaFoldingPanelComponent) private _foldingPanelComponent : LaFoldingPanelComponent;
 
-  constructor(private _galleryService: LaGalleryService, @Inject(DOCUMENT) document: HTMLDocument) {
+  constructor(private windowRef: WindowRef,
+              @Inject(DOCUMENT) document: HTMLDocument,
+              private _galleryService: LaGalleryService) {
+    this.window = windowRef.nativeWindow;
     this.document = document;
   }
 
@@ -40,5 +47,9 @@ export class AppComponent {
     if (this.foldIsOpen && event.target.classList.contains('la-gallery')) {
       this._foldingPanelComponent.closeFold();
     }
+  }
+
+  scrollToGallery() {
+    this.windowRef.scrollIt(this._galleryComponent.elementRef.nativeElement, 600, 'easeInCubic');
   }
 }
