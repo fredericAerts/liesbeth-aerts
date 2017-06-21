@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="nl" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="95629d7057d6fdd7ee0af1ad50e6fbae895191fc" datatype="html">
+        <source>Hi, I am Liesbeth Aerts.</source>
+        <target>Hallo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/la-hero/la-hero.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Hero</note>
+      </trans-unit>
+      <trans-unit id="045fc87fa3fcd0f00f4dccf34579f0c4881378ea" datatype="html">
+        <source>I study dementia at UNSW in Sydney. I love talking and writing about science as much as doing research. Follow me on Twitter or get in touch to join the conversation.</source>
+        <target>Ik studeer dementie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/la-hero/la-hero.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Intro</note>
+        <note priority="1" from="meaning">Hero</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

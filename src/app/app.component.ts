@@ -50,6 +50,6 @@ export class AppComponent {
   }
 
   scrollToGallery() {
-    this.windowRef.scrollIt(this._galleryComponent.elementRef.nativeElement, 600, 'easeInCubic');
+    this.windowRef.scrollTo(this._galleryComponent.elementRef.nativeElement, 600, 'easeInCubic');
   }
 }

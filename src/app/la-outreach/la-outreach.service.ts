@@ -10,12 +10,14 @@ export class LaOutreachService {
   url: string;
 
   constructor(private http: Http) {
-    this.url = 'http://localhost:8888/api/test.php';
+    this.url = 'http://localhost:8888/api/outreach.php';
   }
 
-  test(): Observable<string> {
-    return this.http.get(this.url)
-                    .map((response: Response) => response.text())
+  getItems(): Observable<any> {
+    return this.http.get(`${this.url}/outreach`)
+                    .map((response: Response) => {
+                      return JSON.parse(response.text()).data;
+                    })
                     .catch(this.handleError);
   }
 

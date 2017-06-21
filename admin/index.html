@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Liesbeth Aerts | Admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="vendor/date-picker/bootstrap-datepicker.min.css">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  </head>
+  <body>
+    <!-- Add your site or application content here -->
+    <div class="container">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#outreach" aria-controls="outreach" role="tab" data-toggle="tab">Outreach</a></li>
+        <li role="presentation"><a href="#advocacy" aria-controls="advocacy" role="tab" data-toggle="tab">Advocacy</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <!-- OUTREACH -->
+        <div role="tabpanel" class="tab-pane active" id="outreach">
+          <h3>Add item</h3>
+          <p><strong>English form fields are required. Dutch form fields fall back on respective English form fields when empty.</strong></p>
+          <br>
+          <form id="outreach-form" class="clearfix">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#outreach-form-en" aria-controls="outreach-form-en" role="tab" data-toggle="tab">English</a></li>
+              <li role="presentation"><a href="#outreach-form-nl" aria-controls="outreach-form-nl" role="tab" data-toggle="tab">Dutch</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="outreach-form-en">
+                <br>
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" id="title" name="title" data-validation="required">
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea class="form-control" rows="3.1" id="description" name="description" data-validation="required"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="link">Link to website</label>
+                  <input type="text" class="form-control" id="link" name="link" data-validation="required">
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="date">Date</label>
+                      <div class="input-group date" data-provide="datepicker" data-date-format="yyyy/mm/dd">
+                        <input type="text" class="form-control" id="date" name="date" data-validation="date" data-validation-format="yyyy/mm/dd">
+                        <div class="input-group-addon">
+                          <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="thumb">Image path</label>
+                      <input type="text" class="form-control" id="thumb" name="thumb">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="audience">Audience</label>
+                      <div>Choose from autocomplete list or add a new audience. Adding new audience requires English and French translation separated by forward slash <small>(eg. society/maatschappij)</small></div>
+                      <input type="text" class="form-control" id="audience" name="audience" autocomplete="off" data-validation="required">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="medium">Medium</label>
+                      <div>Choose from autocomplete list or add a new medium. Adding new medium requires English and French translation separated by forward slash <small>(eg. newspaper/krant)</small></div>
+                      <input type="text" class="form-control" id="medium" name="medium" autocomplete="off" data-validation="required">
+                    </div>
+                  </div>
+                </div>
+                <input type="submit" class="btn btn-default pull-right"></input>
+              </div><!-- ./TAB OUTREACH EN -->
+              <div role="tabpanel" class="tab-pane" id="outreach-form-nl">
+                <br>
+                <div class="form-group">
+                  <label for="title-nl">Titel</label>
+                  <input type="text" class="form-control" id="title-nl" name="title-nl">
+                </div>
+                <div class="form-group">
+                  <label for="description-nl">Beschrijving</label>
+                  <textarea class="form-control" rows="3.1" id="description-nl" name="description-nl"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="link-nl">Link naar website</label>
+                  <input type="text" class="form-control" id="link-nl" name="link-nl">
+                </div>
+              </div><!-- ./TAB OUTREACH NL -->
+            </div>
+          </form>
+          <hr>
+          <h3>Remove item</h3>
+          <ul class="list-group js-list-group" data-items="outreach">
+
+          </ul>
+        </div><!-- ./OUTREACH -->
+
+        <!-- ADVOCACY -->
+        <div role="tabpanel" class="tab-pane" id="advocacy">
+          <h3>Add item</h3>
+          <p><strong>English form fields are required. Dutch form fields fall back on respective English form fields when empty.</strong></p>
+          <br>
+          <form id="advocacy-form" class="clearfix">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#advocacy-form-en" aria-controls="advocacy-form-en" role="tab" data-toggle="tab">English</a></li>
+              <li role="presentation"><a href="#advocacy-form-nl" aria-controls="advocacy-form-nl" role="tab" data-toggle="tab">Dutch</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="advocacy-form-en">
+                <br>
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" id="title" name="title" data-validation="required">
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea class="form-control" rows="3.1" id="description" name="description" data-validation="required"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="link">Link to website</label>
+                  <input type="text" class="form-control" id="link" name="link" data-validation="required">
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="date">Date</label>
+                      <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control" id="date" name="date" data-validation="date" data-validation-format="yyyy/mm/dd">
+                        <div class="input-group-addon">
+                          <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="thumb">Image path</label>
+                      <input type="text" class="form-control" id="thumb" name="thumb">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="topic">Topic</label>
+                  <div>Choose from autocomplete list or add a new topic. Adding new topic requires English and French translation separated by forward slash <small>(eg. communication/communicatie)</small></div>
+                  <input type="text" class="form-control" id="topic" name="topic" autocomplete="off" data-validation="required">
+                </div>
+                <input type="submit" class="btn btn-default pull-right"></input>
+              </div><!-- ./TAB ADVOCACY EN -->
+              <div role="tabpanel" class="tab-pane" id="advocacy-form-nl">
+                <br>
+                <div class="form-group">
+                  <label for="title-nl">Titel</label>
+                  <input type="text" class="form-control" id="title-nl" name="title-nl">
+                </div>
+                <div class="form-group">
+                  <label for="description-nl">Beschrijving</label>
+                  <textarea class="form-control" rows="3.1" id="description-nl" name="description-nl"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="link-nl">Link naar website</label>
+                  <input type="text" class="form-control" id="link-nl" name="link-nl">
+                </div>
+              </div><!-- ./TAB ADVOCACY NL -->
+            </div>
+          </form>
+          <hr>
+          <h3>Remove item</h3>
+        </div><!-- ./ADVOCACY -->
+      </div>
+    </div><!-- ./container -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script src="vendor/date-picker/bootstrap-datepicker.min.js"></script>
+    <script src="vendor/typeahead/bootstrap3-typeahead.min.js"></script>
+    <script src="app/typeahead.js"></script>
+    <script src="app/forms.js"></script>
+    <script src="app/remove.js"></script>
+  </body>
+</html>

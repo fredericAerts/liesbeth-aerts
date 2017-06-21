@@ -10,19 +10,19 @@ import { LaOutreachService } from './la-outreach.service';
   ],
 })
 export class LaOutreachComponent implements OnInit {
-  test: string;
+  items: any = [];
   errorMessage: string;
 
   constructor(private outreachService: LaOutreachService) { }
 
   ngOnInit() {
-    this.getTest();
+    this.getItems();
   }
 
-  getTest() {
-    this.outreachService.test()
+  getItems() {
+    this.outreachService.getItems()
                      .subscribe(
-                       testValue => this.test = testValue,
+                       items => this.items = items,
                        error =>  this.errorMessage = <any>error);
   }
 

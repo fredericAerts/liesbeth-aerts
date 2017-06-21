@@ -14,7 +14,7 @@ export class WindowRef {
     return window;
   }
 
-  scrollIt(destination: HTMLElement, duration = 200, easing = 'linear', callback?) {
+  scrollTo(destination: HTMLElement, duration = 200, easing = 'linear', callback?) {
     const easings = {
       linear(t) {
         return t;
