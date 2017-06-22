@@ -85,6 +85,7 @@
                   </div>
                 </div>
                 <input type="submit" class="btn btn-default pull-right"></input>
+                <a href="#!" onclick="clearForm($('#outreach-form'))">Clear form</a>
               </div><!-- ./TAB OUTREACH EN -->
               <div role="tabpanel" class="tab-pane" id="outreach-form-nl">
                 <br>
@@ -104,9 +105,8 @@
             </div>
           </form>
           <hr>
-          <h3>Remove item</h3>
+          <h3>Items (<span class="js-item-count"></span>)</h3>
           <ul class="list-group js-list-group" data-items="outreach">
-
           </ul>
         </div><!-- ./OUTREACH -->
 
@@ -140,7 +140,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="date">Date</label>
-                      <div class="input-group date" data-provide="datepicker">
+                      <div class="input-group date" data-provide="datepicker" data-date-format="yyyy/mm/dd">
                         <input type="text" class="form-control" id="date" name="date" data-validation="date" data-validation-format="yyyy/mm/dd">
                         <div class="input-group-addon">
                           <span class="glyphicon glyphicon-th"></span>
@@ -161,6 +161,7 @@
                   <input type="text" class="form-control" id="topic" name="topic" autocomplete="off" data-validation="required">
                 </div>
                 <input type="submit" class="btn btn-default pull-right"></input>
+                <a href="#!" onclick="clearForm($('#advocacy-form'))">Clear form</a>
               </div><!-- ./TAB ADVOCACY EN -->
               <div role="tabpanel" class="tab-pane" id="advocacy-form-nl">
                 <br>
@@ -180,7 +181,9 @@
             </div>
           </form>
           <hr>
-          <h3>Remove item</h3>
+          <h3>Items (<span class="js-item-count"></span>)</h3>
+          <ul class="list-group js-list-group" data-items="advocacy">
+          </ul>
         </div><!-- ./ADVOCACY -->
       </div>
     </div><!-- ./container -->

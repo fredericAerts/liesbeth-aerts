@@ -29,7 +29,7 @@ export class AppComponent {
   }
 
   selectItem(component) {
-    this.activeComponent = component;
+    this.windowRef.scrollTo(this._galleryComponent.elementRef.nativeElement, 300, 'easeInCubic', () => this.activeComponent = component);
   }
 
   onFoldToggle(isOpen) {

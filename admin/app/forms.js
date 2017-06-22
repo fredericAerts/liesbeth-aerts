@@ -1,31 +1,36 @@
 $(document).ready(function() {
-  var $outreachForm = $("#outreach-form");
-  var $advocacyForm = $("#advocacy-form");
+  initForm("outreach");
+  initForm("advocacy");
 
   initItemList("outreach");
+  initItemList("advocacy");
+});
 
+function initForm(itemType) {
   $.validate({
+    form : '#' + itemType + '-form',
     onSuccess : function($form) {
       var itemId = $form.find('#id').val();
       var params = JSON.stringify(getParams($form));
+      var baseUrl = '/api/' + itemType + '.php/' + itemType;
 
       if (!itemId) {
         // POST NEW ITEM
-        jQuery.post('/api/outreach.php/outreach', params, function() {
+        jQuery.post(baseUrl, params, function() {
           clearForm($form);
-          initItemList("outreach");
+          initItemList(itemType);
           alert("item added!");
         });
       } else {
         // EDIT ITEM
         $.ajax({
-          url: '/api/outreach.php/outreach/' + itemId,
+          url: baseUrl + '/' + itemId,
           type: 'PUT',
           data: params,
           success: function(result) {
             clearForm($form);
             alert("item updated!");
-            initItemList("outreach");
+            initItemList(itemType);
           }
         });
       }
@@ -33,7 +38,7 @@ $(document).ready(function() {
       return false; // Will stop the submission of the form
     },
   });
-});
+}
 
 function getParams($form) {
   var nameValMap = Array.prototype.slice.call($form.find("[name]")).reduce(function(acc, curr) {
@@ -48,9 +53,10 @@ function getParams($form) {
 function initItemList(itemType) {
   var $itemList = $(".js-list-group[data-items='"+ itemType +"']");
   $itemList.html('');
-  jQuery.get('/api/outreach.php/' + itemType, function (response) {
-    JSON.parse(response).data.forEach(function(item) {
-      var $item = $('<button type="button" class="list-group-item">' + item.title + '<i class="glyphicon glyphicon-remove pull-right"></i></button>');
+  jQuery.get('/api/' + itemType + '.php/' + itemType, function (response) {
+    var items = JSON.parse(response).data;
+    items.forEach(function(item) {
+      var $item = $('<button type="button" class="list-group-item">' + item.title + '<i class="glyphicon glyphicon-remove pull-right" style="line-height:20px;"></i></button>');
       $item.on('click', '.glyphicon-remove', function(e) {
         if (window.confirm("Do you really want to delete item: " + item.title + "?")) {
           deleteItem(item.id, itemType)
@@ -63,12 +69,13 @@ function initItemList(itemType) {
       });
       $itemList.append($item);
     });
+    $itemList.parent().find('.js-item-count').html(items.length);
   });
 }
 
 function deleteItem(itemId, itemType) {
   $.ajax({
-    url: '/api/outreach.php/' + itemType + '/' + itemId,
+    url: '/api/' + itemType + '.php/' + itemType + '/' + itemId,
     type: 'DELETE',
     success: function(result) {
       initItemList(itemType);
@@ -78,7 +85,7 @@ function deleteItem(itemId, itemType) {
 }
 
 function editItem(itemId, itemType) {
-  jQuery.get('/api/outreach.php/' + itemType + '/' + itemId, function (response) {
+  jQuery.get('/api/' + itemType + '.php/' + itemType + '/' + itemId, function (response) {
     var itemData = JSON.parse(response).data[0];
     populateForm(itemData, itemId, itemType);
   });

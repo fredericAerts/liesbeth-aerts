@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+import { WidgetsModule } from './widgets/widgets.module';
+
 import { WindowRef } from './browser/window-ref.service';
 import { AppComponent } from './app.component';
 import { LaGalleryComponent } from './la-gallery/la-gallery.component';
@@ -35,6 +37,7 @@ import { LaHeroComponent } from './la-hero/la-hero.component';
   imports: [
     BrowserModule,
     HttpModule,
+    WidgetsModule,
   ],
   providers: [
     WindowRef,

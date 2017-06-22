@@ -3,12 +3,9 @@
 <p>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus tempora nostrum aut quam praesentium veritatis nisi, odio eius, voluptatibus, iure neque commodi corrupti, inventore laborum fugiat itaque. Pariatur rem veritatis earum quia maxime praesentium accusantium ipsam veniam tenetur hic tempora, unde ipsa esse, aut est repellendus porro, maiores corporis illo!
 </p>
+
 <ul>
   <li *ngFor="let item of items">
-    -----------------
-    <h5>{{ item.title }} (id: {{ item.id }})</h5>
-    <p>{{ item.description }}</p>
-    <p>date: {{ item.date }}</p>
-    <p>Path to image: {{ item.thumb }}</p>
+    <la-card [item]="item"></la-card>
   </li>
 </ul>

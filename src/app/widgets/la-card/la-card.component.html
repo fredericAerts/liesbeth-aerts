@@ -1,0 +1,7 @@
+<article>
+  <img *ngIf="item.thumb" src="assets/img/{{ item.thumb }}" alt="{{ item.thumb }}">
+  <time>{{ item.date }}</time>
+  <h1>{{ item.title }}</h1>
+  <p>{{ item.description }}</p>
+  <a href="{{ item.link }}" target="_blank">Link</a>
+</article>

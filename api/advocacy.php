@@ -65,8 +65,7 @@ if ($method == 'GET') {
                                     .'"link-nl":"'.$row['link-nl'].'",'
                                     .'"date":"'.$row['date'].'",'
                                     .'"thumb":"'.$row['thumb'].'",'
-                                    .'"audience":"'.$row['audience'].'",'
-                                    .'"medium":"'.$row['medium'].'"}';
+                                    .'"topic":"'.$row['topic'].'"}';
     $counter++;
   }
 
@@ -75,6 +74,7 @@ if ($method == 'GET') {
   } else {
     echo '{"data": []}';
   }
+
 } elseif ($method == 'POST') {
   echo mysqli_insert_id($link);
 } else {
