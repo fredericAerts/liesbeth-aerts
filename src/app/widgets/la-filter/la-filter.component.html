@@ -1,0 +1,18 @@
+<div class="la-filter">
+  <div *ngIf="filterParams.length" class="la-filter__indicators">
+    <span>Filters:</span>
+    <span *ngFor="let filterParam of filterParams;">{{ filterParam | lowercase }}</span>
+  </div>
+  <i class="la-filter__icon material-icons" (click)="toggleDropdown();">filter_list</i>
+  <div class="la-filter__dropdown" [class.visible]="isDropdownOpen">
+    <div *ngFor="let filterProp of filterProps;">
+      <span class="la-filter__dropdown__prop-title">{{ filterProp | titlecase }}</span>
+      <ul class="la-filter__dropdown__prop-list">
+        <li class="la-filter__dropdown__prop-list__item" *ngFor="let filter of filters[filterProp];" (click)="filterItems(filterProp, filter)">
+          <i [class.visible]="filter.isActive" class="icon material-icons">check</i>
+          {{ filter.filterValue | titlecase }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

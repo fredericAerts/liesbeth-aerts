@@ -1,0 +1,100 @@
+.la-filter {
+  position: relative;
+
+  height: 50px;
+  padding: 0 20px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.la-filter__indicators {
+  display: none;
+
+  @media only screen and (min-width: 1100px) {
+    display: inline-block;
+  }
+
+  > span {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 50px;
+
+    &:not(:first-child) {
+      margin-top: 10px;
+      padding: 0 5px;
+
+      font-size: 12px;
+      line-height: 30px;
+
+      &:not(:last-child) {
+        border-right: 1px solid #ccc;
+      }
+    }
+  }
+}
+
+.la-filter__icon {
+  float: right;
+  line-height: 50px;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+/*  DROPDOWN
+    ================================================================================ */
+.la-filter__dropdown {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  z-index: 1;
+
+  display: none;
+  padding: 10px 0;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  text-align: left;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.la-filter__dropdown__prop-title,
+.la-filter__dropdown__prop-list__item {
+  padding: 0 20px;
+
+  line-height: 30px;
+}
+
+.la-filter__dropdown__prop-title {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.la-filter__dropdown__prop-list__item {
+  padding-left: 30px;
+  background: #fff;
+
+  cursor: pointer;
+
+  &:hover {
+    background: #eee;
+
+    transition: background .3s ease;
+  }
+
+  .icon {
+    float: right;
+    position: relative;
+    top: 3px;
+    right: -10px;
+
+    visibility: hidden;
+
+    &.visible {
+      visibility: visible;
+    }
+  }
+}

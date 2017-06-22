@@ -1,11 +1,13 @@
-<h2>Hello World!</h2>
+<h2>Outreach</h2>
 <em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, laboriosam?</em>
 <p>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus tempora nostrum aut quam praesentium veritatis nisi, odio eius, voluptatibus, iure neque commodi corrupti, inventore laborum fugiat itaque. Pariatur rem veritatis earum quia maxime praesentium accusantium ipsam veniam tenetur hic tempora, unde ipsa esse, aut est repellendus porro, maiores corporis illo!
 </p>
-
-<ul>
-  <li *ngFor="let item of items">
-    <la-card [item]="item"></la-card>
-  </li>
-</ul>
+<div>
+  <la-filter (onFilter)=filterItems($event); [filterProps]="itemFilterProps" [items]="items"></la-filter>
+  <ul>
+    <li *ngFor="let item of filteredItems">
+      <la-card [item]="item"></la-card>
+    </li>
+  </ul>
+</div>

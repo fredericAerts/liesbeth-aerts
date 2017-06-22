@@ -1,7 +1,13 @@
-<article>
-  <img *ngIf="item.thumb" src="assets/img/{{ item.thumb }}" alt="{{ item.thumb }}">
-  <time>{{ item.date }}</time>
-  <h1>{{ item.title }}</h1>
-  <p>{{ item.description }}</p>
-  <a href="{{ item.link }}" target="_blank">Link</a>
-</article>
+<a class="la-card-wrapper" href="{{ item.link }}" target="_blank">
+  <article class="la-card">
+    <header>
+      <img class="la-card__thumb" *ngIf="item.thumb" src="assets/img/{{ item.thumb }}" alt="{{ item.thumb }}">
+      <time class="la-card__date">{{ item.date | date}}</time>
+      <h1 class="la-card__title">{{ item.title }}</h1>
+    </header>
+    <p class="la-card__description">{{ item.description }}</p>
+    <footer>
+      <span class="la-card__cta">View</span>
+    </footer>
+  </article>
+</a>
